@@ -41,7 +41,41 @@
             <artifactId>lombok</artifactId>
             <version>${lombook.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-distcp</artifactId>
+            <version>2.7.1.2.4.0.1-6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>2.7.1.2.4.0.0-169</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-core -->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.hadoop</groupId>-->
+            <!--<artifactId>hadoop-core</artifactId>-->
+            <!--<version>0.20.2</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-jdbc</artifactId>
+            <version>2.1.0</version>
+        </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>fk-art-snapshot</id>
+            <name>Flipkart-Artifactory</name>
+            <url>http://10.85.59.116/artifactory/v1.0/artifacts/libs-snapshots-local</url>
+        </repository>
+        <repository>
+            <id>fk-art-release</id>
+            <name>Flipkart-Artifactory</name>
+            <url>http://10.85.59.116/artifactory/v1.0/artifacts/libs-release-local</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
@@ -58,7 +92,7 @@
                     <!-- MainClass in mainfest make a executable jar -->
                     <archive>
                         <manifest>
-                            <mainClass>com.haha.OnboardingRequest</mainClass>
+                            <mainClass>com.haha.HDFSClient</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

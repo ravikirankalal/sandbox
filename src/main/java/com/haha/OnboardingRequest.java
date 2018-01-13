@@ -1,5 +1,6 @@
 package com.haha;
 
+import lombok.extern.slf4j.Slf4j;
 import org.activiti.engine.*;
 import org.activiti.engine.form.FormData;
 import org.activiti.engine.form.FormProperty;
@@ -18,6 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+@Slf4j
 public class OnboardingRequest {
 
     public static final String ONBOARDING_BPMN20_XML = "onboarding.bpmn20.xml";
