@@ -1,4 +1,4 @@
-package com.haha;
+package com.haha.Misc;
 
 import java.util.*;
 class Solution {

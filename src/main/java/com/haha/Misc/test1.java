@@ -1,4 +1,4 @@
-package com.haha;
+package com.haha.Misc;
 
 public class test1 {
     public static void main(String[] args) {

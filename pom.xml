@@ -13,6 +13,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <jackson.version>2.6.3</jackson.version>
+        <aws.sdk.version>1.9.4</aws.sdk.version>
     </properties>
 
 
@@ -68,6 +69,17 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.9.4</version>
         </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+            <version>${aws.sdk.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -98,7 +110,7 @@
                     <!-- MainClass in mainfest make a executable jar -->
                     <archive>
                         <manifest>
-                            <mainClass>com.haha.HDFSClient</mainClass>
+                            <mainClass>com.haha.d42.Multipartupload</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

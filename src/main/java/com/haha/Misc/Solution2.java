@@ -1,6 +1,4 @@
-package com.haha;
-
-import java.util.List;
+package com.haha.Misc;
 
 /**
  * Definition for singly-linked list.
