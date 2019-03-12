@@ -1,5 +1,8 @@
 package com.haha.round2;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class test1 {
     public static class List {
         int value;
@@ -16,7 +19,24 @@ public class test1 {
 
     }
 
-
+    private static char findDuplicate(String inputString) {
+        Map<Character,Boolean> repeatMap = new HashMap<>();
+        char[] charArry = new char[inputString.length()];
+        inputString.getChars(0,inputString.length(),charArry,0);
+        for (int i=0;i<inputString.length();i++) {
+            if (repeatMap.containsKey(charArry[i])) {
+                repeatMap.put(charArry[i],false);
+            } else {
+                repeatMap.put(charArry[i], true);
+            }
+        }
+        for (int i = 0; i < inputString.length(); i++) {
+            if (repeatMap.get(charArry[i])==false) {
+                return charArry[i];
+            }
+        }
+        throw new IllegalStateException("No non repeating char found");
+    }
 
 
 

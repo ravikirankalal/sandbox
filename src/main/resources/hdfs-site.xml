@@ -195,13 +195,13 @@
 
     <property>
         <name>dfs.namenode.http-address</name>
-        <value>prod-fdphadoop-krios-nn-0001:50070</value>
+        <value>10.33.205.86:50070</value>
         <final>true</final>
     </property>
 
     <property>
         <name>dfs.namenode.http-address.krios.nn1</name>
-        <value>prod-fdphadoop-krios-nn-0001:50070</value>
+        <value>10.33.205.86:50070</value>
     </property>
 
     <property>
@@ -211,12 +211,12 @@
 
     <property>
         <name>dfs.namenode.https-address</name>
-        <value>prod-fdphadoop-krios-nn-0001:50470</value>
+        <value>10.33.205.86:50470</value>
     </property>
 
     <property>
         <name>dfs.namenode.https-address.krios.nn1</name>
-        <value>prod-fdphadoop-krios-nn-0001:50470</value>
+        <value>10.33.205.86:50470</value>
     </property>
 
     <property>
@@ -237,12 +237,12 @@
 
     <property>
         <name>dfs.namenode.rpc-address</name>
-        <value>prod-fdphadoop-krios-nn-0001:8020</value>
+        <value>10.33.205.86:8020</value>
     </property>
 
     <property>
         <name>dfs.namenode.rpc-address.krios.nn1</name>
-        <value>prod-fdphadoop-krios-nn-0001:8020</value>
+        <value>10.33.205.86:8020</value>
     </property>
 
     <property>
@@ -265,14 +265,15 @@
         <value>200</value>
     </property>
 
+    
     <property>
         <name>dfs.namenode.servicerpc-address</name>
-        <value>prod-fdphadoop-krios-nn-0001:8021</value>
+        <value>10.33.205.86:8021</value>
     </property>
 
     <property>
         <name>dfs.namenode.servicerpc-address.krios.nn1</name>
-        <value>prod-fdphadoop-krios-nn-0001:8021</value>
+        <value>10.33.205.86:8021</value>
     </property>
 
     <property>

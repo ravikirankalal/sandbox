@@ -1,75 +1,67 @@
-package com.haha.Misc;
-
-import java.io.InputStream;
-import java.security.PrivilegedExceptionAction;
-
-import org.apache.hadoop.conf.*;
-import org.apache.hadoop.fs.FileUtil;
-import org.apache.hadoop.fs.permission.FsAction;
-import org.apache.hadoop.fs.permission.FsPermission;
-import org.apache.hadoop.security.UserGroupInformation;
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.FileStatus;
-
-public class HDFSClient {
-
-    public static void main(String args[]) {
-
-        HDFSClient hdfsClient = new HDFSClient();
-        hdfsClient.haha();
-    }
-
-    public void haha() {
-        try {
-            UserGroupInformation ugi
-                    = UserGroupInformation.createRemoteUser("fk-ip-data-service");
-
-            ugi.doAs(new PrivilegedExceptionAction<Void>() {
-
-                public Void run() throws Exception {
-
-                    final FileSystem fs;
-                    Configuration conf = new Configuration();
-//                    conf.set("fs.defaultFS", "hdfs://1.2.3.4:8020/user/hbase");
-                    InputStream in1 = this.getClass().getClassLoader().getResourceAsStream("core-site.xml");
-                    InputStream in2 = this.getClass().getClassLoader().getResourceAsStream("hdfs-site.xml");
-                    if(in1 != null && in2 != null ) {
-                        conf.addResource(in1);
-                        conf.addResource(in2);
-                    } else {
-                        throw new RuntimeException("Unknown cluster : ");
-                    }
-                    conf.set("hadoop.job.ugi", "fk-ip-data-service");
-                    fs = FileSystem.get(conf);
-
-                    fs.createNewFile(new Path("/tmp"));
-
-                    FileStatus[] status = fs.listStatus(new Path("/tmp"));
-                    for(int i=0;i<status.length;i++){
-                        System.out.println(status[i].getPath());
-                    }
-
-
-                    String src = "/projects/planning/dsp_test/dataframes/f57698a0-75fa-42f1-bf88-a2d8c8eaea3d/f57698a0-75fa-42f1-bf88-a2d8c8eaea3d.csv";
-                    String dest = "/projects/planning/dcp_fact.db/forecasted_ef_fact/vertical=AluminiumFoilAndShrinkWrap/refresh_id=4182540";
-                    Path destination = new Path(dest);
-
-                    if(!fs.exists(destination)){
-                        if(!fs.exists(destination)) {
-                            fs.mkdirs(destination);
-                            fs.setPermission(destination, new FsPermission(FsAction.ALL,FsAction.ALL,FsAction.ALL));
-                        }
-                        FileUtil.copy(fs, new Path(src), fs, destination, false, true, conf);
-                    } else {
-                        FileUtil.copy(fs, new Path(src), fs, destination, false, true, conf);
-                    }
-                    return null;
-                }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-}
+//package com.haha.Misc;
+//
+//import java.io.FileOutputStream;
+//import java.io.IOException;
+//import java.io.InputStream;
+//import java.net.URI;
+//import java.nio.file.FileSystems;
+//import java.nio.file.Files;
+//import java.nio.file.LinkOption;
+//import java.nio.file.Paths;
+//import java.security.PrivilegedExceptionAction;
+//import java.util.Optional;
+//import java.util.Set;
+//import java.util.TreeSet;
+//import java.util.concurrent.atomic.AtomicReference;
+//
+//import lombok.extern.slf4j.Slf4j;
+//import org.apache.commons.io.IOUtils;
+//import org.apache.hadoop.conf.*;
+//import org.apache.hadoop.fs.*;
+//import org.apache.hadoop.fs.permission.FsAction;
+//import org.apache.hadoop.fs.permission.FsPermission;
+//import org.apache.hadoop.security.UserGroupInformation;
+//
+//@Slf4j
+//public class HDFSClient {
+//
+//    private final FileSystem fs;
+//
+//    public static void main(String args[]) throws IOException{
+//
+//        HDFSClient hdfsClient = new HDFSClient();
+//        hdfsClient.haha();
+//    }
+//
+//    public void haha() {
+//        try {
+//            UserGroupInformation ugi = UserGroupInformation.createRemoteUser("fk-ip-data-service");
+//            Configuration conf = new Configuration();
+//            conf.set("fs.defaultFS", "hdfs://krios");
+//            conf.set("hadoop.job.ugi", "fk-ip-data-service");
+//            AtomicReference<FileSystem> fileSystemAtomicReference = new AtomicReference<>();
+//            ugi.doAs((PrivilegedExceptionAction<Void>) () -> {
+//                FileSystem fs = FileSystem.get(conf);
+//                fileSystemAtomicReference.set(fs);
+//                return null;
+//            });
+//
+//            FileSystem fs = fileSystemAtomicReference.get();
+//            System.out.println(fs.exists(new Path("/tmp/haha")));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    public boolean createHDFSDirIfNotExists(Path hdfsDir) throws IOException{
+//        if(!fs.exists(hdfsDir)) {
+//            fs.mkdirs(hdfsDir);
+//            fs.setPermission(hdfsDir, new FsPermission(FsAction.ALL,FsAction.ALL,FsAction.ALL));
+//            log.info("Made hdfs directory " + hdfsDir);
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
+//
+//}
